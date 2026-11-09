@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ваша компания — качественные услуги</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #20242b;
+  background: #f5f7fa;
+}
+header {
+  padding: 22px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+}
+.logo { font-size: 22px; font-weight: bold; }
+nav a {
+  margin-left: 20px;
+  color: #333;
+  text-decoration: none;
+}
+.hero {
+  padding: 100px 8%;
+  background: #172c4d;
+  color: white;
+}
+.hero h1 { font-size: 48px; max-width: 650px; }
+.hero p { font-size: 19px; line-height: 1.6; }
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 16px 25px;
+  background: #f3b643;
+  color: #172c4d;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+section { padding: 65px 8%; }
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.card {
+  padding: 25px;
+  background: white;
+  border-radius: 12px;
+}
+footer {
+  padding: 35px 8%;
+  background: #172c4d;
+  color: white;
+}
+@media(max-width:700px) {
+  .hero h1 { font-size: 34px; }
+  .cards { grid-template-columns: 1fr; }
+  nav { display: none; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">ВАША КОМПАНИЯ</div>
+  <nav>
+    <a href="#services">Услуги</a>
+    <a href="#about">О нас</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>Качественные услуги для вашего бизнеса</h1>
+  <p>Профессиональный подход, надёжность и внимание к каждому клиенту.</p>
+  <a class="btn" href="#contacts">Связаться с нами</a>
+</div>
+
+<section id="services">
+  <h2>Наши услуги</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Услуга №1</h3>
+      <p>Описание вашей первой услуги.</p>
+    </div>
+    <div class="card">
+      <h3>Услуга №2</h3>
+      <p>Описание вашей второй услуги.</p>
+    </div>
+    <div class="card">
+      <h3>Услуга №3</h3>
+      <p>Описание вашей третьей услуги.</p>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <h2>О нашей компании</h2>
+  <p>Расскажите здесь о компании, опыте работы и преимуществах.</p>
+</section>
+
+<footer id="contacts">
+  <h2>Свяжитесь с нами</h2>
+  <p>Телефон: +7 (900) 000-00-00</p>
+  <p>Адрес: Ваш город</p>
+  <p>© Ваша компания</p>
+</footer>
+
+</body>
+</html>
