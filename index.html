@@ -1,117 +1,325 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ваша компания — качественные услуги</title>
-<style>
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  color: #20242b;
-  background: #f5f7fa;
-}
-header {
-  padding: 22px 8%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: white;
-}
-.logo { font-size: 22px; font-weight: bold; }
-nav a {
-  margin-left: 20px;
-  color: #333;
-  text-decoration: none;
-}
-.hero {
-  padding: 100px 8%;
-  background: #172c4d;
-  color: white;
-}
-.hero h1 { font-size: 48px; max-width: 650px; }
-.hero p { font-size: 19px; line-height: 1.6; }
-.btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 16px 25px;
-  background: #f3b643;
-  color: #172c4d;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
-}
-section { padding: 65px 8%; }
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-.card {
-  padding: 25px;
-  background: white;
-  border-radius: 12px;
-}
-footer {
-  padding: 35px 8%;
-  background: #172c4d;
-  color: white;
-}
-@media(max-width:700px) {
-  .hero h1 { font-size: 34px; }
-  .cards { grid-template-columns: 1fr; }
-  nav { display: none; }
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="VELA — демонстрационный сайт салона красоты. Волосы, ногти, брови и ресницы.">
+  <title>VELA — салон красоты</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #fff8f3;
+      --ink: #3a2330;
+      --muted: #674854;
+      --dark: #472534;
+      --light: #fff7f3;
+      --blush: #f9d8ce;
+      --line: #e8d4ce;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; line-height: 1.6; }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid currentColor; outline-offset: 5px; }
+    h1, h2, h3, p { margin: 0; }
+    h1, h2, h3 { line-height: 1.08; }
+    h1, h2 { font-family: Georgia, serif; font-weight: 400; letter-spacing: -.055em; }
+    h1 { font-size: clamp(2.55rem, 6vw, 5.6rem); max-width: 14ch; }
+    h1 span { color: #8a4058; font-style: italic; }
+    h2 { font-size: clamp(2.1rem, 4.7vw, 4rem); }
+    h3 { font-size: 1.4rem; }
+    .wrap { width: min(74rem, calc(100% - 3rem)); margin-inline: auto; }
+    .skip {
+      position: absolute;
+      z-index: 2;
+      inset: .75rem auto auto .75rem;
+      padding: .65rem 1rem;
+      color: var(--ink);
+      background: var(--blush);
+      transform: translateY(-200%);
+    }
+    .skip:focus { transform: none; }
+    .contacts, .footer { background: var(--dark); color: var(--light); }
+    .top { border-bottom: 1px solid var(--line); }
+    .top .wrap, .footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: .5rem 1.5rem;
+      padding-block: 1rem;
+    }
+    .brand, nav a { text-decoration: none; }
+    .brand { display: inline-flex; align-items: center; gap: .65rem; font-weight: 750; }
+    .brand-mark {
+      display: inline-grid;
+      place-items: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: .55rem;
+      background: var(--blush);
+      color: var(--ink);
+    }
+    nav ul { display: flex; flex-wrap: wrap; gap: 0 1.35rem; margin: 0; padding: 0; list-style: none; }
+    nav a { display: inline-flex; align-items: center; min-height: 44px; }
+    nav a:hover { color: #8a4058; text-decoration: underline; }
+    .footer a:hover { color: var(--blush); text-decoration: underline; }
+    .hero .wrap {
+      display: grid;
+      grid-template-columns: 1.12fr .88fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: center;
+      padding-block: clamp(3rem, 8vw, 7rem);
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      margin-bottom: 1.15rem;
+      font-size: .79rem;
+      font-weight: 750;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: .5rem;
+      height: .5rem;
+      border-radius: 50%;
+      background: currentColor;
+    }
+    .hero .eyebrow { color: #8a4058; }
+    .contacts .eyebrow { color: var(--blush); }
+    .hero .intro { color: var(--muted); }
+    .contacts .intro { color: #f2d8da; }
+    .intro { margin-top: 1.15rem; max-width: 49ch; font-size: 1.12rem; }
+    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin-top: 1.8rem; }
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: .75rem;
+      min-height: 48px;
+      padding: .65rem 1.15rem;
+      border: 1px solid var(--dark);
+      border-radius: 2rem;
+      background: var(--dark);
+      color: var(--light);
+      font-weight: 750;
+      text-decoration: none;
+      transition: background-color .18s, transform .18s;
+    }
+    .button:hover { background: #632f43; transform: translateY(-2px); }
+    .button:focus-visible { outline-color: var(--dark); }
+    .button.secondary { border-color: #a56879; background: transparent; color: var(--ink); }
+    .button.secondary:hover { background: #f5ded7; }
+    .art {
+      width: 100%;
+      display: block;
+      border: 1px solid #d7a49b;
+      border-radius: 48% 48% 1.25rem 1.25rem;
+      background: #ebc0b3;
+    }
+    .section { padding-block: clamp(3.6rem, 8vw, 7rem); }
+    .section .intro, .card p, .steps p { color: var(--muted); }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .card {
+      padding: clamp(1.2rem, 3vw, 2rem);
+      border: 1px solid var(--line);
+      border-radius: 1.15rem;
+      background: #fff;
+    }
+    .card p, .steps p { margin-top: .65rem; }
+    .icon {
+      display: grid;
+      place-items: center;
+      width: 3rem;
+      height: 3rem;
+      margin-bottom: 1.8rem;
+      border-radius: .75rem;
+      background: #f7ded7;
+    }
+    .icon svg { width: 1.5rem; height: 1.5rem; }
+    .about { background: #f8e8e0; }
+    .split { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 2rem 4rem; }
+    .steps { list-style: none; margin: 0; padding: 0; }
+    .steps li { display: flex; gap: 1rem; padding-block: 1.15rem; border-top: 1px solid #dbbcb8; }
+    .steps li:last-child { border-bottom: 1px solid #dbbcb8; }
+    .step-number { font-weight: 750; font-variant-numeric: tabular-nums; }
+    .contact-panel { padding: clamp(1.2rem, 4vw, 2rem); border: 1px solid #956a77; border-radius: 1.15rem; }
+    .contact-panel h3 { color: var(--blush); }
+    address { font-style: normal; margin-top: 1rem; overflow-wrap: anywhere; }
+    .contact-panel p + p { margin-top: .4rem; }
+    .footer { border-top: 1px solid #78515f; color: #f2d8da; }
+    .footer a { display: inline-flex; align-items: center; min-height: 44px; }
+    @keyframes arrive {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+      .hero-copy, .art { animation: arrive .6s ease-out both; }
+      .art { animation-delay: .12s; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .button { transition: none; }
+      .button:hover { transform: none; }
+    }
+    @media (max-width: 52rem) {
+      .hero .wrap, .split { grid-template-columns: 1fr; }
+      .art { max-width: 32rem; }
+    }
+    @media (max-width: 42rem) {
+      .wrap { width: calc(100% - 2rem); }
+      .top .wrap { align-items: flex-start; flex-direction: column; }
+      .cards { grid-template-columns: 1fr; }
+      .icon { margin-bottom: 1rem; }
+    }
+  </style>
 </head>
-<body>
-
-<header>
-  <div class="logo">ВАША КОМПАНИЯ</div>
-  <nav>
-    <a href="#services">Услуги</a>
-    <a href="#about">О нас</a>
-    <a href="#contacts">Контакты</a>
-  </nav>
-</header>
-
-<div class="hero">
-  <h1>Качественные услуги для вашего бизнеса</h1>
-  <p>Профессиональный подход, надёжность и внимание к каждому клиенту.</p>
-  <a class="btn" href="#contacts">Связаться с нами</a>
-</div>
-
-<section id="services">
-  <h2>Наши услуги</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Услуга №1</h3>
-      <p>Описание вашей первой услуги.</p>
+<body id="top">
+  <a class="skip" href="#main">К содержанию</a>
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">✦</span>VELA</a>
+      <nav aria-label="Основная навигация">
+        <ul>
+          <li><a href="#services">Услуги</a></li>
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#contacts">Запись</a></li>
+        </ul>
+      </nav>
     </div>
-    <div class="card">
-      <h3>Услуга №2</h3>
-      <p>Описание вашей второй услуги.</p>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap">
+        <div class="hero-copy">
+          <p class="eyebrow">Салон красоты · демосайт</p>
+          <h1 id="hero-title">Время <span>для себя.</span></h1>
+          <p class="intro">Стрижка, свежий маникюр или уход за бровями. Выбери, чем порадовать себя сегодня.</p>
+          <div class="actions">
+            <a class="button" href="#contacts">Записаться в салон <span aria-hidden="true">↗</span></a>
+            <a class="button secondary" href="#services">Выбрать услугу</a>
+          </div>
+        </div>
+        <svg class="art" viewBox="0 0 520 480" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="rose" x2="1" y2="1">
+              <stop stop-color="#f4cfbe"/>
+              <stop offset="1" stop-color="#c98787"/>
+            </linearGradient>
+            <linearGradient id="glass">
+              <stop stop-color="#6b3444"/>
+              <stop offset=".55" stop-color="#9e5864"/>
+              <stop offset="1" stop-color="#602e3d"/>
+            </linearGradient>
+            <pattern id="ribs" width="8" height="8" patternUnits="userSpaceOnUse">
+              <path d="M1 0v8" stroke="#f8e2c4" stroke-opacity=".5"/>
+            </pattern>
+          </defs>
+          <path d="M0 0h520v480H0z" fill="#ebc0b3"/>
+          <path d="M63 386V236a197 197 0 0 1 394 0v150z" fill="url(#rose)"/>
+          <path d="M78 379V236a182 182 0 0 1 364 0v143" fill="none" stroke="#fff1e3" stroke-opacity=".7"/>
+          <path d="M0 381q260-28 520 0v99H0z" fill="#d49c91"/>
+          <ellipse cx="254" cy="397" rx="149" ry="18" fill="#713b48" opacity=".16"/>
+          <g fill="none" stroke="#793f4c" stroke-width="2" stroke-linecap="round">
+            <path d="M337 373c22-99 47-168 67-217M359 287c-6-30-23-49-51-60 3 29 22 50 51 60ZM371 250c24-8 43-27 48-52-25 8-43 25-48 52Z"/>
+            <path d="M387 205c-15-16-22-34-17-54 17 13 24 31 17 54Z"/>
+          </g>
+          <path d="M404 156c-40 4-43-31-17-36-15-24 16-39 29-14 23-15 43 11 21 27 16 24-14 44-30 24z" fill="#fff0e5"/>
+          <circle cx="409" cy="134" r="9" fill="#ac6774"/>
+          <rect x="181" y="129" width="71" height="87" rx="8" fill="#ae7559"/>
+          <rect x="181" y="129" width="71" height="87" rx="8" fill="url(#ribs)"/>
+          <rect x="145" y="202" width="143" height="183" rx="25" fill="url(#glass)"/>
+          <rect x="156" y="213" width="121" height="161" rx="19" fill="none" stroke="#e5aab0" stroke-opacity=".65"/>
+          <rect x="168" y="252" width="97" height="74" rx="3" fill="#fff1e5"/>
+          <text x="216.5" y="285" text-anchor="middle" font-family="Georgia, serif" font-size="19" letter-spacing="3" fill="#622d3e">VELA</text>
+          <path d="M202 300h29" stroke="#ad6877"/>
+          <rect x="291" y="239" width="43" height="64" rx="7" fill="#6a3644"/>
+          <rect x="275" y="292" width="75" height="97" rx="14" fill="#f5d4cb" stroke="#a56770"/>
+          <path d="M286 325h53v38h-53z" fill="#fff1e5"/>
+          <path d="M305 343h15" stroke="#9e5e6b"/>
+          <g fill="none" stroke="#fff2e6" stroke-width="2">
+            <path d="M119 153v28m-14-14h28M331 95v22m-11-11h22M429 299v22m-11-11h22"/>
+            <circle cx="119" cy="167" r="21" opacity=".5"/>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <section class="section" id="services" aria-labelledby="services-title">
+      <div class="wrap">
+        <p class="eyebrow">Примеры услуг</p>
+        <h2 id="services-title">Услуги салона</h2>
+        <div class="cards">
+          <article class="card">
+            <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="m8.2 8.2 12.3 12.3M8.2 15.8 20.5 3.5"/></svg></span>
+            <h3>Волосы</h3>
+            <p>Стрижки, окрашивание, укладки и уход. Поможем подобрать форму и оттенок, которые легко поддерживать дома.</p>
+          </article>
+          <article class="card">
+            <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="7" y="9" width="10" height="12" rx="2"/><path d="M9 9V3h6v6m-5 6h4"/></svg></span>
+            <h3>Ногти</h3>
+            <p>Маникюр и педикюр с покрытием или без. Можно выбрать спокойный оттенок или обсудить дизайн с мастером.</p>
+          </article>
+          <article class="card">
+            <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M2 12s4-5 10-5 10 5 10 5-4 5-10 5S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/><path d="m5 9-2-3m6 1-1-4m7 4 1-4m3 6 2-3"/></svg></span>
+            <h3>Брови и ресницы</h3>
+            <p>Коррекция и окрашивание бровей, ламинирование ресниц. Подберём форму и интенсивность под твои пожелания.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="wrap split">
+        <div>
+          <p class="eyebrow">О салоне · пример текста</p>
+          <h2 id="about-title">Как проходит визит</h2>
+          <p class="intro">В VELA можно прийти с фотографией понравившегося образа или подобрать его вместе с мастером.</p>
+        </div>
+        <ol class="steps">
+          <li><span class="step-number" aria-hidden="true">01</span><div><h3>Обсуждаем пожелания</h3><p>Расскажи, что хочется изменить и сколько времени удобно уделять уходу дома.</p></div></li>
+          <li><span class="step-number" aria-hidden="true">02</span><div><h3>Подбираем услугу</h3><p>Мастер предложит варианты и заранее сориентирует по времени и стоимости.</p></div></li>
+          <li><span class="step-number" aria-hidden="true">03</span><div><h3>Делимся советами по уходу</h3><p>После процедуры подскажем, как сохранить результат.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section contacts" id="contacts" aria-labelledby="contacts-title">
+      <div class="wrap split">
+        <div>
+          <p class="eyebrow">Запись и контакты</p>
+          <h2 id="contacts-title">Запланируй визит</h2>
+          <p class="intro">При записи укажи услугу и удобный день. Администратор предложит свободное время.</p>
+        </div>
+        <div class="contact-panel">
+          <h3>Данные для записи · пример</h3>
+          <address>
+            <p>Телефон — [номер салона]</p>
+            <p>Адрес — [город, улица, дом]</p>
+            <p>Часы работы — [график салона]</p>
+          </address>
+          <p class="intro">Демо: онлайн-запись пока не подключена.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>© VELA · вымышленный салон красоты</p>
+      <a href="#top">Наверх ↑</a>
     </div>
-    <div class="card">
-      <h3>Услуга №3</h3>
-      <p>Описание вашей третьей услуги.</p>
-    </div>
-  </div>
-</section>
-
-<section id="about">
-  <h2>О нашей компании</h2>
-  <p>Расскажите здесь о компании, опыте работы и преимуществах.</p>
-</section>
-
-<footer id="contacts">
-  <h2>Свяжитесь с нами</h2>
-  <p>Телефон: +7 (900) 000-00-00</p>
-  <p>Адрес: Ваш город</p>
-  <p>© Ваша компания</p>
-</footer>
-
+  </footer>
 </body>
 </html>
